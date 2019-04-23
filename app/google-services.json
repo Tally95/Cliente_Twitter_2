@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "261482126111",
+    "firebase_url": "https://cliente-twitter-grupo5.firebaseio.com",
+    "project_id": "cliente-twitter-grupo5",
+    "storage_bucket": "cliente-twitter-grupo5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:261482126111:android:ba218a9e5e3fedd5",
+        "android_client_info": {
+          "package_name": "com.example.cliente_twitter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "261482126111-ophe3qgfghp4fnglnvilutdttj2gicu7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cliente_twitter",
+            "certificate_hash": "9c3513be73e6088d369e77a3c798d52cabfd8580"
+          }
+        },
+        {
+          "client_id": "261482126111-0brgdoao899vvs0psoug5ff9ip0h1lo8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnKty7SQfnSlILmBdXx0kuGEDRdGAntBA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "261482126111-0brgdoao899vvs0psoug5ff9ip0h1lo8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
