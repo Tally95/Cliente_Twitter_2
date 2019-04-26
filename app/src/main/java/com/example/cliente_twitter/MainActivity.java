@@ -1,9 +1,12 @@
 package com.example.cliente_twitter;
 
 import android.content.Intent;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener authListener;
 
     private TwitterLoginButton login_button;
+
+    //private TabLayout tabLayout;
     //private TextView userText;
     //private TextView statusText;
     //private ImageView imageView;
@@ -47,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         Twitter.initialize(config);
 
         setContentView(R.layout.activity_main);
+        //ViewPager viewPager =(ViewPager)findViewById(R.id.viewpager);
 
         login_button = (TwitterLoginButton) findViewById(R.id.login_button);
 
@@ -84,4 +90,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void goManualLogin(View view) {
+        Intent intent = new Intent(this, LoginManualActivity.class);
+        startActivity(intent);
+    }
 }
