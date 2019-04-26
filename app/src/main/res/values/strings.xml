@@ -15,4 +15,6 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="boton_twitter">botonTwit</string>
+    <string name="imageBoton_back">botonBack</string>
 </resources>
