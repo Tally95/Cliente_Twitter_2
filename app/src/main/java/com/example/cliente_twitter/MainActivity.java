@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     //private TextView userText;
     //private TextView statusText;
     //private ImageView imageView;
+    //private esto es un comentariooo
+    //otro comentario
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
