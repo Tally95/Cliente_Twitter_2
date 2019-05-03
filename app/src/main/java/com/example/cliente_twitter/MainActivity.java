@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     //private ImageView imageView;
     //private esto es un comentariooo
     //otro comentario
+
+    TextView regre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
