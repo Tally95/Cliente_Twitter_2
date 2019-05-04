@@ -10,12 +10,11 @@
         android:layout_height="match_parent">
 
         <Button
-            android:layout_width="25dp"
-            android:layout_height="26dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:background="@color/tw__composer_blue"
-            android:text="Back"
+            android:background="@drawable/tw__composer_logo_blue"
             android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
 
@@ -23,7 +22,7 @@
             android:id="@+id/txtTweet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="350dp"
+            android:layout_marginTop="250dp"
             android:fadeScrollbars="false"
             android:hint="Escribe lo que estás pensando..."/>
 
@@ -31,9 +30,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="208dp"
+            android:layout_marginTop="380dp"
             android:layout_marginRight="20px"
-            android:layout_marginTop="400dp"
-            android:background="@color/tw__composer_blue"
+            android:background="@color/tw__composer_blue_text"
             android:text="Publicar Tweet"
             android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
