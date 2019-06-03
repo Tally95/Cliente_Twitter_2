@@ -17,4 +17,5 @@
     </string>
     <string name="boton_twitter">botonTwit</string>
     <string name="imageBoton_back">botonBack</string>
+    <string name="title_activity_time_line">TimeLineActivity</string>
 </resources>
