@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.View;
@@ -27,19 +28,25 @@ public class TimeLineActivity extends AppCompatActivity {
 
     private RecyclerView TimelineRecyclerView;
     private TweetTimelineRecyclerViewAdapter adapter;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private FloatingActionButton fab;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time_line);
+
+        swipeRefreshLayout = findViewById(R.id.srlTimeLine);
+        fab = findViewById(R.id.fab);
+        TimelineRecyclerView = findViewById(R.id.rvTimeLine);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         setUpRecyclerView();
-        loadUserTimeline();
+        refreshRecycler();
 
-        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,7 +56,7 @@ public class TimeLineActivity extends AppCompatActivity {
                 startActivity(intent);
 
                 setUpRecyclerView();
-                loadUserTimeline();
+                refreshRecycler();
 
                 //codigo interesante para mas luego
                /* Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -59,26 +66,26 @@ public class TimeLineActivity extends AppCompatActivity {
     }
 
     private void setUpRecyclerView() {
-        TimelineRecyclerView = findViewById(R.id.rvTimeLine);
+        loadUserTimeline();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);//it should be Vertical only
         TimelineRecyclerView.setLayoutManager(linearLayoutManager);
     }
 
     private void loadUserTimeline() {
+
         //now build adapter for recycler view
         adapter = new TweetTimelineRecyclerViewAdapter.Builder(this)
+                //LLamo al metotodo que construye el TimeLine
                 .setTimeline(buildTimeline())//set the created timeline
                 //action callback to listen when user like/unlike the tweet
                 .setOnActionCallback(new Callback<Tweet>() {
-
                     @Override
                     public void success(Result<Tweet> result) {
-                        //do something on success response
+                        //Actulizo el Recycler cada vez que se regresa a la Activity
                     }
 
                     @Override
                     public void failure(TwitterException exception) {
-                        //do something on failure response
                     }
                 })
                 //set tweet view style
@@ -90,7 +97,7 @@ public class TimeLineActivity extends AppCompatActivity {
     }
 
     public UserTimeline  buildTimeline(){
-        //MyPreferenceManager myPreferenceManager = new MyPreferenceManager(context);
+        //MyPreferenceManager myPreferenceManager = new MyPreferenceManager(this);
         TwitterSession session = TwitterCore.getInstance().getSessionManager().getActiveSession();
         Long userid = session.getUserId();
         String username = session.getUserName();
@@ -98,7 +105,7 @@ public class TimeLineActivity extends AppCompatActivity {
         Log.d("username", username);
 
         //build UserTimeline
-        UserTimeline userTimeline = new UserTimeline.Builder()
+        return new UserTimeline.Builder()
                 .userId(userid)//User ID of the user to show tweets for
                 //.screenName(myPreferenceManager.getScreenName())//screen name of the user to show tweets for
                 .screenName(username)//screen name of the user to show tweets for
@@ -106,6 +113,17 @@ public class TimeLineActivity extends AppCompatActivity {
                 .includeRetweets(true)//Whether to include re-tweets. Defaults to true.
                 .maxItemsPerRequest(5)//Max number of items to return per request
                 .build();
-        return userTimeline;
+    }
+
+    public void refreshRecycler(){
+        swipeRefreshLayout.setColorSchemeResources(R.color.tw__composer_white);
+        swipeRefreshLayout.setProgressBackgroundColorSchemeResource(R.color.colorPrimaryDark);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                setUpRecyclerView();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
     }
 }
