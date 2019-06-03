@@ -34,6 +34,7 @@ public class TimeLine extends AppCompatActivity {
         userTimelineRecyclerView = findViewById(R.id.rvTimeLine);
         setUpRecyclerView();
         loadUserTimeline();
+
         String tweetUrl = "https://twitter.com/intent/tweet?";
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(tweetUrl));
         startActivity(intent);

@@ -15,7 +15,7 @@ public class LoginManualActivity extends AppCompatActivity {
 
     public void goHomepage(View view) {
         String username = "Manual Login Simulation, there is no connection with the Twitter API";
-        Intent intent  = new Intent(LoginManualActivity.this, Homepage.class);
+        Intent intent  = new Intent(LoginManualActivity.this, TimeLine.class);
         intent.putExtra("username", username);
         startActivity(intent);
     }
