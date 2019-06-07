@@ -3,12 +3,15 @@ package com.example.cliente_twitter;
 import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.twitter.sdk.android.core.DefaultLogger;
 import com.twitter.sdk.android.core.Twitter;
@@ -28,20 +31,7 @@ public class MainActivity extends AppCompatActivity {
             "gIJJtOt51fD3HspaNvNXH3RESV8uY1OvqFK4dcdjQf4jEhO6n1";
 
     private static final String TAG = "TwitterAuth";
-
-    private FirebaseAuth fbAuth;
-    private FirebaseAuth.AuthStateListener authListener;
-
     private TwitterLoginButton login_button;
-
-    //private TabLayout tabLayout;
-    //private TextView userText;
-    //private TextView statusText;
-    //private ImageView imageView;
-    //private esto es un comentariooo
-    //otro comentario
-
-    TextView regre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +46,8 @@ public class MainActivity extends AppCompatActivity {
         Twitter.initialize(config);
 
         setContentView(R.layout.activity_main);
-        //ViewPager viewPager =(ViewPager)findViewById(R.id.viewpager);
 
-        login_button = (TwitterLoginButton) findViewById(R.id.login_button);
-
+        login_button = findViewById(R.id.login_button);
         login_button.setCallback(new Callback<TwitterSession>() {
 
             @Override
@@ -86,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         login_button.onActivityResult(requestCode, resultCode, data);
     }
 
+
     public void login(TwitterSession session){
         String username = session.getUserName();
         Intent intent = new Intent(MainActivity.this, TimeLineActivity.class);
@@ -93,9 +82,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-    public void goManualLogin(View view) {
-        Intent intent = new Intent(this, LoginManualActivity.class);
-        startActivity(intent);
-    }
 }

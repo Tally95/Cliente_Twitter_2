@@ -26,23 +26,21 @@ import android.view.View;
 
 public class TimeLineActivity extends AppCompatActivity {
 
+    public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
     private RecyclerView TimelineRecyclerView;
     private TweetTimelineRecyclerViewAdapter adapter;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private FloatingActionButton fab;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time_line);
-
-        swipeRefreshLayout = findViewById(R.id.srlTimeLine);
-        fab = findViewById(R.id.fab);
-        TimelineRecyclerView = findViewById(R.id.rvTimeLine);
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        swipeRefreshLayout = findViewById(R.id.srlTimeLine);
+        FloatingActionButton fab = findViewById(R.id.fab);
+        TimelineRecyclerView = findViewById(R.id.rvTimeLine);
 
         setUpRecyclerView();
         refreshRecycler();
@@ -50,17 +48,9 @@ public class TimeLineActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 String tweetUrl = "https://twitter.com/intent/tweet?";
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(tweetUrl));
                 startActivity(intent);
-
-                setUpRecyclerView();
-                refreshRecycler();
-
-                //codigo interesante para mas luego
-               /* Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
             }
         });
     }
@@ -107,7 +97,6 @@ public class TimeLineActivity extends AppCompatActivity {
         //build UserTimeline
         return new UserTimeline.Builder()
                 .userId(userid)//User ID of the user to show tweets for
-                //.screenName(myPreferenceManager.getScreenName())//screen name of the user to show tweets for
                 .screenName(username)//screen name of the user to show tweets for
                 .includeReplies(true)//Whether to include replies. Defaults to false.
                 .includeRetweets(true)//Whether to include re-tweets. Defaults to true.
@@ -116,8 +105,8 @@ public class TimeLineActivity extends AppCompatActivity {
     }
 
     public void refreshRecycler(){
-        swipeRefreshLayout.setColorSchemeResources(R.color.tw__composer_white);
-        swipeRefreshLayout.setProgressBackgroundColorSchemeResource(R.color.colorPrimaryDark);
+        swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
+        swipeRefreshLayout.setProgressBackgroundColorSchemeResource(R.color.colorBlack);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

@@ -31,4 +31,5 @@
         app:backgroundTint="@color/common_google_signin_btn_text_dark_focused"
         app:srcCompat="@android:drawable/ic_input_add" />
 
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

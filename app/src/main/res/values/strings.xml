@@ -18,4 +18,6 @@
     <string name="boton_twitter">botonTwit</string>
     <string name="imageBoton_back">botonBack</string>
     <string name="title_activity_time_line">TimeLineActivity</string>
+    <string name="empty_saved">Se ha guardado exitosamente en la base de datos</string>
+    <string name="buton_save">string</string>
 </resources>

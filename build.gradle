@@ -17,6 +17,8 @@ buildscript {
 
 allprojects {
     repositories {
+        maven { url 'https://kotlin.bintray.com/kotlinx/'
+        }
         google()
         jcenter()
         
@@ -28,6 +30,6 @@ task clean(type: Delete) {
 }
 
 ext {
-    roomVersion = '2.1.0-alpha06'
+    roomVersion = '2.1.0-alpha04'
     archLifecycleVersion = '2.0.0'
 }
